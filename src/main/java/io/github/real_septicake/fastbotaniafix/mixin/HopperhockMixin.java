@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @Mixin(HopperhockBlockEntity.class)
 public class HopperhockMixin {
-    @Inject(method = "getFilterForInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntitiesOfClass(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;", shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "getFilterForInventory", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntitiesOfClass(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;", shift = At.Shift.AFTER, remap = true), remap = false)
     private static void fix(Level level, BlockPos pos, boolean recursiveForDoubleChests, CallbackInfoReturnable<List<ItemStack>> cir, @Local(name = "filter") List<ItemStack> filter, @Local(name = "dir") Direction dir) {
         Optional<ItemFrameBlockEntity> frame = level.getBlockEntity(pos.relative(dir), fuzs.fastitemframes.init.ModRegistry.ITEM_FRAME_BLOCK_ENTITY.value());
         frame.ifPresent(f -> {
