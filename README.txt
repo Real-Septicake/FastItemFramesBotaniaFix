@@ -1,0 +1,1 @@
+A quick mod to fix incompatibility between Botania's corporea and Fuzs' Fast Item Frames
